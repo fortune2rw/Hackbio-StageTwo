@@ -13,4 +13,4 @@
 
   ## Part 3 Image Dataset
 
-  - [Data from excel sheet ] (https://github.com/HackBio-Internship/2025_project_collection/raw/refs/heads/main/hb_stage_2.xlsx)
+   [Data from excel sheet ](https://github.com/HackBio-Internship/2025_project_collection/raw/refs/heads/main/hb_stage_2.xlsx)
