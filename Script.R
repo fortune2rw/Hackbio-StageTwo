@@ -3,12 +3,13 @@ install.packages("tidyr")
 install.packages("dplR")
 install.packages("pheatmap")
 install.packages("reshape")
+install.packages("gridExtra")
 library(tidyr)
 library(dplR)
 library(pheatmap)
 library(reshape)
 library(grid)
-library(gridextra)
+library(gridExtra)
 library(png)
 
 
@@ -65,7 +66,7 @@ ggsave("panel_volcano.png", )
 file_online2 <- "https://raw.githubusercontent.com/HackBio-Internship/2025_project_collection/refs/heads/main/Python/Dataset/data-3.csv"
 breast_cancer <- read.csv(file_online2, header = T)
 
-plot.2c <- ggplot(breast_cancer,
+ggplot(breast_cancer,
        aes(x = radius_mean, y = texture_mean, color = as.factor(diagnosis)))+
   geom_point(size = 2, alpha = 1)+
   coord_cartesian(xlim = c(0,25), ylim = c(0,40))+
@@ -91,7 +92,7 @@ cor_df <- melt(cor_matrix)
 colnames(cor_df) <- c(variable.name = c("variable1","variable2"),
                       value.name = "value")
 #plot
-plot.2d <- ggplot(cor_df,
+ggplot(cor_df,
        aes(x = variable2, y = variable1, fill = value ))+
   geom_tile(col = "Black")+
   geom_text(aes(label = round(value, 2)), size = 3)+
@@ -280,7 +281,7 @@ col_names <- colnames(mat_c)
 row_names <- c.sheet[1]
 
 #extract cell type and time from a character vector
-cell_type <- str_extract("[0-9]+h$", "", col_names)
+cell_type <- sub("[0-9]+h$", "", col_names)
 time <- str_extract(col_names, "[0-9]+h")
 
 
@@ -293,7 +294,7 @@ max_abs <- max(abs(mat_c), na.rm = T)
 breaks <- seq(-max_abs, max_abs, length.out = 130)
 
 #plot
-plot.3c <- pheatmap(mat = mat_c,
+pheatmap(mat = mat_c,
          border_color = "grey",
          color = heat_col, breaks = breaks,
          annotation_col = annotation_col,
@@ -331,7 +332,7 @@ d.sheet_df1$pathway <- factor(d.sheet_df1$pathway,
                               levels = unique(d.sheet_df1$pathway))
 
 #plot
-plot.3d <- ggplot(d.sheet_df1,
+ggplot(d.sheet_df1,
        aes(x = variable, y = pathway, fill = values))+
   geom_tile(color = "grey60")+
   scale_fill_gradient2(low = "#e15759" , mid = "white",high = "royalblue")+
@@ -353,7 +354,7 @@ plot.3d <- ggplot(d.sheet_df1,
 sheet.e <- read_excel("~/Downloads/hb_stage_2.xlsx", sheet = "e") #read sheet e
 
 #plot
-plot.3e <- ggplot(sheet.e,
+ggplot(sheet.e,
        aes(x = half_life, y = alpha, color = stage, size = count))+
   geom_point(alpha = 0.7)+
   coord_cartesian(xlim = c(0,50))+
@@ -372,7 +373,7 @@ f.sheet <- read_excel("~/Downloads/hb_stage_2.xlsx", sheet = "f") #read sheet f
 sub.df <- f.sheet[c(1,2,7,8),] ##subset B and Plasma 
 
 #plot
-plot.3f <- ggplot(sub.df, aes(x = stage, y = proportion, fill = cell_type))+
+ggplot(sub.df, aes(x = stage, y = proportion, fill = cell_type))+
   geom_bar(stat = "identity", position = "stack", width = 0.7)+
   scale_fill_manual(values = c(Plasma = hb_pal[1], B = hb_pal[4]),
                     breaks = c("Plasma", "B"))+
@@ -428,7 +429,7 @@ V(g_graph)$vertex.shape <- "square"
 
 #plot
 plot(g_graph,
-     main = "Directed cell–cell interaction network",)
+     main = "Directed cell–cell interaction network")
 
 #W#hy directed? cel singlalling flows in one direction, so directed edge capture
 #this natural information flow rather than assuming all interction are reciprocal
@@ -440,6 +441,8 @@ plot(g_graph,
 # Task 8 : Final assembly
 # ============================================================================
 # Arrange all panels into a single figure
+
+
 
 
 
