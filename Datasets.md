@@ -10,3 +10,7 @@
 
 - Diagnostic data:  
   [data-3.csv](https://raw.githubusercontent.com/HackBio-Internship/2025_project_collection/refs/heads/main/Python/Dataset/data-3.csv)
+
+  ## Part 3 Image Dataset
+
+  - [Data from excel sheet ] (https://github.com/HackBio-Internship/2025_project_collection/raw/refs/heads/main/hb_stage_2.xlsx)
