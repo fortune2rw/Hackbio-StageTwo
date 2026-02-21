@@ -58,7 +58,6 @@ legend("topright",
        col = c(1, 2, 3),
        pch = 19)
 
-ggsave("panel_volcano.png", )
 
 # Part 2 – Breast Cancer Data Exploration
 # ==============================================================================
