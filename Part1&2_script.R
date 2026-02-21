@@ -25,7 +25,7 @@ Gene_counts <- read.csv(file_onlinez, header = T )
 
 
 colnames(Gene_counts[,2:7])
-plot.1a <- pheatmap(mat = Gene_counts[,2:7],
+pheatmap(mat = Gene_counts[,2:7],
                     border_color = "Black",
                     legend = T,
                     fontsize_row = 7,
