@@ -306,8 +306,3 @@ plot(g_graph,
 ##What does edge weight encode biologically?
 #Edge weight represent how frequently two cell interacts, high edge weeight 
 #intense signalling, stronger molecular binding between cells. 
-
-# ============================================================================
-# Task 8 : Final assembly
-# ============================================================================
-# Arrange all panels into a single figure
